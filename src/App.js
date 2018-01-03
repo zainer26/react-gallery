@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Loader from './Loader';
 import PhotoGallery from './PhotoGallery';
+import Header from './Header';
 
 
 class App extends Component {
@@ -13,16 +14,21 @@ class App extends Component {
       loading: true,
       error: null,
       images: [],
-      photoURL: 'http://demo8762083.mockable.io/italypics',
+      photoURL: 'italy.json',
     };
   }
 
   componentDidMount() {
-    this.getPics();
+    this.getPics('italy.json');
   }
 
-  getPics = () => {
-    axios.get(this.state.photoURL)
+  handleMenuClick = (photo_url) => {
+      this.getPics(photo_url);
+  }
+
+  getPics = (photo_url) => {
+    
+    axios.get(photo_url)
       .then(res => {
         const images = res.data.map(images => images);
         this.setState({
@@ -63,8 +69,9 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Header onSelectPhotos={this.getPics} />
         <input value={this.state.photoURL} onChange={(event) => this.setState({photoURL: event.target.value})} />
-        <button onClick={this.getPics}> Get </button>
+        <button onClick={ () => this.getPics('hollister.json') }> Get </button>
         {loading ? <Loader/> : <PhotoGallery images={images}/>}
       </div>
     );
