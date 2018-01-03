@@ -9,61 +9,26 @@ class PhotoGallery extends Component {
     super(props);
 
     this.state = {
-      images: [],
-      loading: true,
-      error: null,
       photoIndex: 0,
       isOpen: false
     };
   }
 
-  componentDidMount() {
-    axios.get(`http://demo8762083.mockable.io/italypics`)
-      .then(res => {
-        const images = res.data.map(images => images);
-        this.setState({
-          images, 
-          loading: false,
-          error: null
-        });
-        //this.setState({loadedFlag: true});
-      }).catch(err => {
-        // Something went wrong. Save the error in state and re-render.
-        this.setState({
-          loading: false,
-          error: err
-        });
-      });
-  }
-
-  renderError() {
-    return (
-      <div>
-        Something went wrong: {this.state.error.message}
-      </div>
-    );
+  updateLightboxState = (object) => {
+    //{ isOpen: true, photoIndex: index }
+    this.setState(object);
   }
 
   render() {
-    const { loading, error, photoIndex, isOpen, images } = this.state;
+    const { photoIndex, isOpen } = this.state;
+    const { images } = this.props;
 
-    if(error) {
-      return this.renderError();
-    }
-
-    if(loading) {
-      return (<Loader/>);
-    }
 
     return (
       <div>
         <div className="container">
-          {this.state.images.map((image, index) =>
-              <div className="item" key={image.id} style={{backgroundImage: "url('./images/"+image.filename+"')"}} onClick={() => this.setState({ isOpen: true, photoIndex: index })}>
-                <a href="">
-                  { image.caption }
-                </a>
-              </div>
+          {images.map((image, index) =>
+              <PhotoItem stateFunction={this.updateLightboxState} image={image} index={index} />
           )}
         </div>
         {isOpen && (

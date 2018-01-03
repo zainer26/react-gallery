@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class PhotoItem extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      
-    };
-  }
-
-  render() {
-    return;
-  }
+function PhotoItem (props) {
+    const { image, stateFunction, index } = props;
+    return(
+      <div className="item" key={image.id} style={{backgroundImage: "url('./images/"+image.filename+"')"}} onClick={() => stateFunction({ isOpen: true, photoIndex: index })}>
+        <a href="">
+          { image.caption }
+        </a>
+      </div>
+    )
 }
+
+PhotoItem.propTypes = {
+	image: PropTypes.string,
+	stateFunction: PropTypes.function,
+	index: PropTypes.number,
+};
 
 export default PhotoItem;
