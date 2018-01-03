@@ -1,0 +1,119 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.square {
+  display: block;
+  float: left;
+  border: 2px solid #000;
+  width: 15%;
+  height: 300px;
+  background-color: #999;
+}
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  align-content: flex-start;
+  -webkit-align-content: flex-start;
+  -ms-flex-line-pack: start;
+  align-items: flex-start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 0px;
+  position: absolute;
+  overflow: auto;
+}
+
+.item {
+  order: 0;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  background-color: red;
+  flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  /* width: 150px; */
+  margin: 0px;
+  min-width: 320px;
+  background-size: cover;
+  /* max-width: 192px; */
+
+  a {
+    color: white;
+  }
+  
+}
+
+.item {
+  position: relative;
+}
+
+.spacer {
+  background-color: green;
+  height: 0px;
+  margin: 0 0px;
+}
+
+.item:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.item-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.image {
+  position: relative;
+  height: 100%;
+  width: 133%;
+  top: 0;
+  left: -16.5%;
+}
