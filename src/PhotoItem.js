@@ -14,7 +14,7 @@ function PhotoItem (props) {
 
 PhotoItem.propTypes = {
 	image: PropTypes.string,
-	stateFunction: PropTypes.function,
+	stateFunction: PropTypes.func,
 	index: PropTypes.number,
 };
 

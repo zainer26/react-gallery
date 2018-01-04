@@ -71,7 +71,7 @@ class App extends Component {
       <div className="App">
         <Header onSelectPhotos={this.getPics} />
         <input value={this.state.photoURL} onChange={(event) => this.setState({photoURL: event.target.value})} />
-        <button onClick={ () => this.getPics('hollister.json') }> Get </button>
+        <button onClick={ () => this.getPics(this.state.photoURL) }> Get </button>
         {loading ? <Loader/> : <PhotoGallery images={images}/>}
       </div>
     );

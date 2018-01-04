@@ -12,7 +12,7 @@ class Header extends Component {
 
   propTypes = {
     value: PropTypes.string,
-    onSelectPhotos: PropTypes.function
+    onSelectPhotos: PropTypes.func
   }
 
   getDefaultProps = () => {
